@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokémon: Breath of the Dragon — Chronicles of the Obsidian Syndicate</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="top-bar">
+        <div class="brand">
+          <span class="crest">🐉</span>
+          <div>
+            <h1>POKÉMON: BREATH OF THE DRAGON</h1>
+            <span class="subtitle">Chronicles of the Obsidian Syndicate • 16-Bit SNES Fan RPG</span>
+          </div>
+        </div>
+        <div class="toolbar">
+          <button id="btn-save" class="tool-btn" title="Quick Save to Browser Storage" disabled>💾 Save</button>
+          <button id="btn-export" class="tool-btn" title="Download Portable .json Save File" disabled>⬇ Export</button>
+          <button id="btn-import" class="tool-btn" title="Load a .json Save File">⬆ Import</button>
+          <input id="file-import" type="file" accept=".json,application/json" hidden />
+          <button id="btn-mute" class="tool-btn" title="Toggle SNES Synth Audio (M)">🔊 Audio: ON</button>
+          <button id="btn-crt" class="tool-btn" title="Toggle CRT Scanlines">📺 CRT: ON</button>
+          <button id="btn-help" class="tool-btn" title="Controls & Field Skills">❔ Controls</button>
+        </div>
+      </header>
+      <div id="save-banner" class="save-banner hidden"></div>
+
+      <main class="stage">
+        <div class="bezel">
+          <div class="screen-wrap crt-on" id="screen-wrap">
+            <canvas id="game-canvas" width="320" height="240"></canvas>
+            <div class="crt-overlay" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="controls-bar">
+          <div class="dpad" aria-label="Directional Pad">
+            <button class="pad-btn up" data-key="up" title="Up (W / ↑)">▲</button>
+            <button class="pad-btn left" data-key="left" title="Left (A / ←)">◀</button>
+            <button class="pad-btn center" data-key="confirm" title="Confirm">●</button>
+            <button class="pad-btn right" data-key="right" title="Right (D / →)">▶</button>
+            <button class="pad-btn down" data-key="down" title="Down (S / ↓)">▼</button>
+          </div>
+
+          <div class="legend">
+            <div><kbd>WASD</kbd>/<kbd>↑↓←→</kbd> Move</div>
+            <div><kbd>Z</kbd>/<kbd>Enter</kbd> Confirm / Talk</div>
+            <div><kbd>X</kbd>/<kbd>Esc</kbd> Menu / Cancel</div>
+            <div><kbd>C</kbd>/<kbd>Space</kbd> Lead Field Skill</div>
+            <div><kbd>Tab</kbd>/<kbd>Q</kbd>/<kbd>E</kbd> Swap Lead Pokémon</div>
+          </div>
+
+          <div class="action-pads">
+            <button class="act-btn act-swap" data-key="swapNext" title="Swap Lead Pokémon (Tab)">LEAD</button>
+            <button class="act-btn act-skill" data-key="skill" title="Use Lead Field Skill (C / Space)">SKILL</button>
+            <button class="act-btn act-b" data-key="cancel" title="Cancel / Menu (X / Esc)">B / MENU</button>
+            <button class="act-btn act-a" data-key="confirm" title="Confirm / Talk (Z / Enter)">A / ACT</button>
+          </div>
+        </div>
+      </main>
+
+      <div id="help-modal" class="modal hidden" role="dialog" aria-modal="true">
+        <div class="modal-card">
+          <h2>SNES Field Guide</h2>
+          <ul>
+            <li><strong>Swap Lead (<kbd>Tab</kbd> / <kbd>Q</kbd> / <kbd>E</kbd>)</strong>: Rotate which Pokémon leads your party line to use its overworld Field Skill!</li>
+            <li><strong>Field Skills (<kbd>C</kbd> / <kbd>Space</kbd>)</strong>:
+              <ul>
+                <li>🔥 <em>Ember Torch</em> (Fire/Dragon): Light dark shrine braziers & melt frost/shadow blocks.</li>
+                <li>🌿 <em>Razor Cut</em> (Grass/Bug): Slice overgrown shadow vines & forage berry bushes.</li>
+                <li>🪨 <em>Tremor Dig</em> (Ground/Rock): Smash cracked boulders & unearth buried relics.</li>
+                <li>⚡ <em>Surge / Angler</em> (Water/Electric): Power ancient runes & fish at Willow Pier!</li>
+              </ul>
+            </li>
+            <li><strong>Dragon Resonance</strong>: Awaken the Ancient Dragon Statue in Verdant Wilds to transform your starter in battle like <em>Breath of Fire</em>!</li>
+            <li><strong>Day &amp; Night Cycle</strong>: Different wild Pokémon appear at Dusk/Night (Gastly, Zubat, Houndour).</li>
+          </ul>
+          <button id="btn-close-help" class="tool-btn">Close Guide</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
